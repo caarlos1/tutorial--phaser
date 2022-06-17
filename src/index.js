@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import logoImg from "./assets/logo.png";
+
+import { skyImg, groundImg, starImg, bombImg, dudeImg } from "./assets";
 
 class MyGame extends Phaser.Scene {
     constructor() {
@@ -7,31 +8,19 @@ class MyGame extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image("logo", logoImg);
-
-        // this.load.image("sky", "assets/sky.png");
-        // this.load.image("ground", "assets/ground.png");
-        // this.load.image("star", "assets/star.png");
-        // this.load.image("bomb", "assets/bomb.png");
-        // this.load.spritsheet("dude", "assets/dude.png", {
-        //     frameWidth: 32,
-        //     frameHeight: 48,
-        // });
+        this.load.image("sky", skyImg);
+        this.load.image("ground", groundImg);
+        this.load.image("star", starImg);
+        this.load.image("bomb", bombImg);
+        this.load.spritesheet("dude", dudeImg, {
+            frameWidth: 32,
+            frameHeight: 48,
+        });
     }
 
     create() {
-        const logo = this.add.image(400, 150, "logo");
-
-        // this.add.image(400, 300, "sky");
-
-        this.tweens.add({
-            targets: logo,
-            y: 450,
-            duration: 2000,
-            ease: "Power2",
-            yoyo: true,
-            loop: -1,
-        });
+        this.add.image(0, 0, "sky").setOrigin(0, 0);
+        this.add.image(400, 300, "star");
     }
 }
 
